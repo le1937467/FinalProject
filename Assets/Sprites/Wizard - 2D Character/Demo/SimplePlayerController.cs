@@ -12,7 +12,11 @@ namespace ClearSky
         Vector3 movement;
         private int direction = 1;
         bool isJumping = false;
+        bool canJump = true;
         private bool alive = true;
+
+        [SerializeField]
+        private LayerMask groundLayer;
 
 
         // Start is called before the first frame update
@@ -20,6 +24,7 @@ namespace ClearSky
         {
             rb = GetComponent<Rigidbody2D>();
             anim = GetComponent<Animator>();
+            
         }
 
         private void Update()
@@ -35,11 +40,6 @@ namespace ClearSky
 
             }
         }
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            anim.SetBool("isJump", false);
-        }
-
 
         void Run()
         {
@@ -69,11 +69,33 @@ namespace ClearSky
             }
             transform.position += moveVelocity * movePower * Time.deltaTime;
         }
+
+        bool isGrounded()
+        {
+            RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y-0.2f), -Vector2.up, groundLayer);
+            if (hit.collider != null)
+            {
+                float distance = Mathf.Abs(hit.point.y - transform.position.y);
+                if (distance < 0.3f)
+                    return true;
+                else
+                    return false;
+            }
+            else
+                return false;
+        }
+
         void Jump()
         {
+            if (isGrounded())
+            {
+                canJump = true;
+                anim.SetBool("isJump", false);
+            }
             if ((Input.GetButtonDown("Jump") || Input.GetAxisRaw("Vertical") > 0)
             && !anim.GetBool("isJump"))
             {
+                canJump = false;
                 isJumping = true;
                 anim.SetBool("isJump", true);
             }
@@ -91,7 +113,7 @@ namespace ClearSky
         }
         void Attack()
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 anim.SetTrigger("attack");
             }

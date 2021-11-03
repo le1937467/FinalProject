@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace ClearSky
 {
@@ -145,5 +149,11 @@ namespace ClearSky
                 alive = true;
             }
         }
+        // void OnTriggerEnter2D(Collier2D collision) {
+        //     // if (collision.gameObject.tag == "NextScene") {
+        //     //     SceneManager.LoadScene("level_2");
+        //     // }
+        //     SceneManager.LoadScene(2);
+        // }
     }
 }

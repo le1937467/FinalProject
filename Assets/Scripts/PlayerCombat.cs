@@ -8,8 +8,8 @@ public class PlayerCombat : MonoBehaviour
 
     [SerializeField]
     private float maxHealth = 100f;
-    /*[SerializeField]
-    private float playerDamage = 10f;*/
+    [SerializeField]
+    private float playerDamage = 10f;
 
     private float currentHealth;
 
@@ -51,6 +51,11 @@ public class PlayerCombat : MonoBehaviour
     {
         //TODO - Reload scene and play death animation
         Debug.LogWarning("You are dead");
+    }
+
+    public void DealDamageTo(EnemyUniversalController enemy)
+    {
+        enemy.TakeDamage(playerDamage);
     }
 
 

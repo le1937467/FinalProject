@@ -201,7 +201,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &212032480
 GameObject:
@@ -234,7 +234,7 @@ Transform:
   - {fileID: 496792197}
   - {fileID: 1888331984}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &307368341
 PrefabInstance:
@@ -435,8 +435,65 @@ Transform:
   m_Children:
   - {fileID: 1456293125}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &341068959
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 253338042074876371, guid: 0e9f5fdd8a7ea404eaded25376ab26f0, type: 3}
+      propertyPath: m_Name
+      value: MechChocoboEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 253338042074876382, guid: 0e9f5fdd8a7ea404eaded25376ab26f0, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 253338042074876382, guid: 0e9f5fdd8a7ea404eaded25376ab26f0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.233615
+      objectReference: {fileID: 0}
+    - target: {fileID: 253338042074876382, guid: 0e9f5fdd8a7ea404eaded25376ab26f0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.566596
+      objectReference: {fileID: 0}
+    - target: {fileID: 253338042074876382, guid: 0e9f5fdd8a7ea404eaded25376ab26f0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 253338042074876382, guid: 0e9f5fdd8a7ea404eaded25376ab26f0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 253338042074876382, guid: 0e9f5fdd8a7ea404eaded25376ab26f0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 253338042074876382, guid: 0e9f5fdd8a7ea404eaded25376ab26f0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 253338042074876382, guid: 0e9f5fdd8a7ea404eaded25376ab26f0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 253338042074876382, guid: 0e9f5fdd8a7ea404eaded25376ab26f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 253338042074876382, guid: 0e9f5fdd8a7ea404eaded25376ab26f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 253338042074876382, guid: 0e9f5fdd8a7ea404eaded25376ab26f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0e9f5fdd8a7ea404eaded25376ab26f0, type: 3}
 --- !u!1001 &406528340
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -994,6 +1051,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  playerDamage: 10
 --- !u!1001 &733528852
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1200,7 +1258,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1116899978
 GameObject:
@@ -1348,7 +1406,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0494845, y: 1}
+    m_SensorSize: {x: 2.3843284, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1497,7 +1555,7 @@ Transform:
   - {fileID: 1877381286}
   - {fileID: 1338616190}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1316697977
 GameObject:
@@ -1527,7 +1585,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1338616190 stripped
 Transform:
@@ -2172,7 +2230,7 @@ GameObject:
   - component: {fileID: 1954605698}
   - component: {fileID: 1954605697}
   - component: {fileID: 1954605699}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}

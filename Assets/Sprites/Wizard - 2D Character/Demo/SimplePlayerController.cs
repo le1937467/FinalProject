@@ -149,11 +149,10 @@ namespace ClearSky
                 alive = true;
             }
         }
-        // void OnTriggerEnter2D(Collier2D collision) {
-        //     // if (collision.gameObject.tag == "NextScene") {
-        //     //     SceneManager.LoadScene("level_2");
-        //     // }
-        //     SceneManager.LoadScene(2);
-        // }
+        void OnTriggerEnter2D(Collider2D collision) {
+            if (collision.gameObject.tag == "NextScene") {
+                SceneManager.LoadScene("level_2");
+            }
+        }
     }
 }

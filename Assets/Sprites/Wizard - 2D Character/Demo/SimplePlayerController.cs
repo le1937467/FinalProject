@@ -11,13 +11,16 @@ namespace ClearSky
         public float movePower = 10f;
         public float jumpPower = 15f; //Set Gravity Scale in Rigidbody2D Component to 5
 
-        private Rigidbody2D rb;
+        public Rigidbody2D rb;
         private Animator anim;
         Vector3 movement;
         private int direction = 1;
-        bool isJumping = false;
-        bool canJump = true;
+        public bool isJumping = false;
+        public bool canJump = true;
         private bool alive = true;
+        private bool canAttack = true;
+        public bool canMove = true;
+        public bool canHit = false;
 
         [SerializeField]
         private LayerMask groundLayer;
@@ -36,8 +39,6 @@ namespace ClearSky
             Restart();
             if (alive)
             {
-                Hurt();
-                Die();
                 Attack();
                 Jump();
                 Run();
@@ -47,6 +48,10 @@ namespace ClearSky
 
         void Run()
         {
+            if (!canMove)
+                return;
+
+
             Vector3 moveVelocity = Vector3.zero;
             anim.SetBool("isRun", false);
 
@@ -93,53 +98,47 @@ namespace ClearSky
         {
             if (isGrounded())
             {
+                if (!canMove)
+                    canMove = true;
                 canJump = true;
+                isJumping = false;
                 anim.SetBool("isJump", false);
             }
-            if ((Input.GetButtonDown("Jump") || Input.GetAxisRaw("Vertical") > 0)
-            && !anim.GetBool("isJump"))
+            if ((Input.GetKey(KeyCode.Space) || Input.GetAxisRaw("Vertical") > 0)
+            && !isJumping && canJump)
             {
                 canJump = false;
                 isJumping = true;
                 anim.SetBool("isJump", true);
+                rb.velocity = Vector2.zero;
+                Vector2 jumpVelocity = new Vector2(0, jumpPower);
+                rb.AddForce(jumpVelocity, ForceMode2D.Impulse);
             }
-            if (!isJumping)
-            {
-                return;
-            }
-
-            rb.velocity = Vector2.zero;
-
-            Vector2 jumpVelocity = new Vector2(0, jumpPower);
-            rb.AddForce(jumpVelocity, ForceMode2D.Impulse);
-
-            isJumping = false;
+            
         }
         void Attack()
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && canAttack)
             {
                 anim.SetTrigger("attack");
+                StartCoroutine(WaitForAttackState());
             }
         }
-        void Hurt()
+        public void Hurt(float str)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                anim.SetTrigger("hurt");
-                if (direction == 1)
-                    rb.AddForce(new Vector2(-5f, 1f), ForceMode2D.Impulse);
-                else
-                    rb.AddForce(new Vector2(5f, 1f), ForceMode2D.Impulse);
-            }
+            anim.SetTrigger("hurt");
+            if (direction == 1)
+                rb.AddForce(new Vector2(-5f *str, 2f), ForceMode2D.Impulse);
+            else
+                rb.AddForce(new Vector2(5f * str, 2f), ForceMode2D.Impulse);
+            
         }
-        void Die()
+        public void Die()
         {
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                anim.SetTrigger("die");
-                alive = false;
-            }
+            anim.SetTrigger("die");
+            alive = false;
+            gameObject.tag = "dead";
+            
         }
         void Restart()
         {
@@ -153,6 +152,16 @@ namespace ClearSky
             if (collision.gameObject.tag == "NextScene") {
                 SceneManager.LoadScene("level_2");
             }
+        }
+
+        IEnumerator WaitForAttackState()
+        {
+            canAttack = false;
+            canHit = true;
+            yield return new WaitForSeconds(0.2f);
+            yield return new WaitUntil(() => !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
+            canAttack = true;
+            canHit = false;
         }
     }
 }

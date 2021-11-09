@@ -1,3 +1,4 @@
+using ClearSky;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,11 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     private static PlayerCombat instance;
+    private PlayerHealthBar healthBar;
+    private SimplePlayerController player;
 
     [SerializeField]
-    private float maxHealth = 100f;
+    public float maxHealth = 100f;
     [SerializeField]
     private float playerDamage = 10f;
 
@@ -18,23 +21,37 @@ public class PlayerCombat : MonoBehaviour
         if (!instance)
             instance = this;
         else if(instance && instance != this)
-        {
             Destroy(this);
-        }
+
+        healthBar = GetComponentInChildren<PlayerHealthBar>();
+        player = GetComponent<SimplePlayerController>();
 
         currentHealth = maxHealth;
     }
 
     public void DamagePlayer(float damageToDeal)
     {
-        currentHealth -= damageToDeal;
-
-        if(currentHealth <= 0)
-        {
-            KillPlayer();
-        }
+        DamagePlayer(damageToDeal,1);
     }
 
+    public void DamagePlayer(float damageToDeal, float kbStr)
+    {
+        currentHealth -= damageToDeal;
+
+        if (currentHealth <= 0)
+        {
+            KillPlayer();
+            healthBar.Kill();
+        }
+        else
+        {
+            healthBar.TakeDamage(damageToDeal);
+        }
+
+        player.Hurt(kbStr);
+        
+    }
+    
     public void HealPlayer(float amountToHeal)
     {
         currentHealth += amountToHeal;
@@ -49,8 +66,7 @@ public class PlayerCombat : MonoBehaviour
 
     public void KillPlayer()
     {
-        //TODO - Reload scene and play death animation
-        Debug.LogWarning("You are dead");
+        player.Die();
     }
 
     public void DealDamageTo(EnemyUniversalController enemy)

@@ -21,6 +21,8 @@ namespace ClearSky
         private bool canAttack = true;
         public bool canMove = true;
         public bool canHit = false;
+        public Animator transition;
+        public float transitionTime = 1f;
 
         [SerializeField]
         private LayerMask groundLayer;
@@ -149,9 +151,16 @@ namespace ClearSky
             }
         }
         void OnTriggerEnter2D(Collider2D collision) {
-            if (collision.gameObject.tag == "NextScene") {
-                SceneManager.LoadScene("level_2");
+            if(collision.gameObject.tag == "NextScene") {
+                StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex+1));
             }
+        }
+        IEnumerator LoadLevel(int levelIndex) {
+            transition.SetTrigger("Start");
+
+            yield return new WaitForSeconds(transitionTime);
+
+            SceneManager.LoadScene(levelIndex);
         }
 
         IEnumerator WaitForAttackState()

@@ -338,17 +338,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: MechChocoboEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 253338042074876376, guid: 0e9f5fdd8a7ea404eaded25376ab26f0, type: 3}
+      propertyPath: m_Size.y
+      value: 10.090434
+      objectReference: {fileID: 0}
+    - target: {fileID: 253338042074876376, guid: 0e9f5fdd8a7ea404eaded25376ab26f0, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.69308996
+      objectReference: {fileID: 0}
+    - target: {fileID: 253338042074876377, guid: 0e9f5fdd8a7ea404eaded25376ab26f0, type: 3}
+      propertyPath: m_Size.x
+      value: 115.18016
+      objectReference: {fileID: 0}
+    - target: {fileID: 253338042074876377, guid: 0e9f5fdd8a7ea404eaded25376ab26f0, type: 3}
+      propertyPath: m_Offset.x
+      value: 2.401186
+      objectReference: {fileID: 0}
     - target: {fileID: 253338042074876382, guid: 0e9f5fdd8a7ea404eaded25376ab26f0, type: 3}
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 253338042074876382, guid: 0e9f5fdd8a7ea404eaded25376ab26f0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.49
+      value: 4.24
       objectReference: {fileID: 0}
     - target: {fileID: 253338042074876382, guid: 0e9f5fdd8a7ea404eaded25376ab26f0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.09
+      value: -5.03
       objectReference: {fileID: 0}
     - target: {fileID: 253338042074876382, guid: 0e9f5fdd8a7ea404eaded25376ab26f0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -568,7 +584,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.197605, y: 1}
+    m_SensorSize: {x: 1.7878788, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

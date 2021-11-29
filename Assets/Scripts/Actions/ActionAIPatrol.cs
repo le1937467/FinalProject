@@ -10,9 +10,9 @@ namespace LDS.GameProgramming
         [SerializeField]
         private List<Transform> _Path = new List<Transform>();
 
-        [SerializeField]
-        [Range(1f, 10f)]
-        private float _PatrolSpeed = 1f;
+        //[SerializeField]
+        //[Range(1f, 10f)]
+        //private float _PatrolSpeed = 1f;
 
         [SerializeField]
         private float _WaitTime;

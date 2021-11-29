@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - dead
   - DialogInteract
+  - Out-Of-Bound
   layers:
   - Default
   - TransparentFX

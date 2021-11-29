@@ -155,6 +155,10 @@ namespace ClearSky
             if(collision.gameObject.tag == "NextScene") {
                 StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex+1));
             }
+
+            if(collision.gameObject.tag == "Out-Of-Bound") {
+                StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
+            }
         }
         IEnumerator LoadLevel(int levelIndex) {
             transition.SetTrigger("Start");

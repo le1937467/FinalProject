@@ -140,7 +140,7 @@ namespace ClearSky
             anim.SetTrigger("die");
             alive = false;
             gameObject.tag = "dead";
-            StartCoroutine(LoadLevel(2));
+            StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
             
         }
         void Restart()

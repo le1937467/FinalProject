@@ -27,6 +27,9 @@ namespace ClearSky
         [SerializeField]
         private LayerMask groundLayer;
 
+        [SerializeField]
+        private GameObject fireball;
+
 
         // Start is called before the first frame update
         void Start()
@@ -42,6 +45,7 @@ namespace ClearSky
             if (alive)
             {
                 Attack();
+                RangedAttack();
                 Jump();
                 Run();
 
@@ -126,6 +130,46 @@ namespace ClearSky
                 StartCoroutine(WaitForAttackState());
             }
         }
+
+        void RangedAttack()
+        {
+            if(Input.GetKeyDown(KeyCode.R) && canAttack)
+            {
+                anim.SetTrigger("attack");
+                if (direction == 1)
+                {
+                    GameObject go = Instantiate(fireball, new Vector3(transform.position.x, transform.position.y+3f), Quaternion.identity);
+                    go.GetComponent<Rigidbody2D>().velocity = Vector2.right * 20f;
+                    go.transform.localScale = new Vector2(-go.transform.localScale.x, go.transform.localScale.y);
+                    
+                }
+                else
+                {
+                    GameObject go = Instantiate(fireball, new Vector3(transform.position.x, transform.position.y+3f), Quaternion.identity);
+                    go.GetComponent<Rigidbody2D>().velocity = Vector2.left * 20f;
+                }
+                StartCoroutine(WaitForAttackState());
+            }
+        }
+        // TRAP ATTACK
+        /*void RangedAttack()
+        {
+            if(Input.GetKeyDown(KeyCode.R) && canAttack)
+            {
+                anim.SetTrigger("attack");
+                if (direction == 1)
+                {
+                    GameObject go = Instantiate(fireball, new Vector3(transform.position.x, transform.position.y), Quaternion.identity);
+                    go.GetComponent<Rigidbody2D>().AddForce(new Vector2(10f, 2f), ForceMode2D.Impulse);
+                }
+                else
+                {
+                    GameObject go = Instantiate(fireball, new Vector3(transform.position.x, transform.position.y), Quaternion.identity);
+                    go.GetComponent<Rigidbody2D>().AddForce(new Vector2(-10f, 2f), ForceMode2D.Impulse);
+                }
+                StartCoroutine(WaitForAttackState());
+            }
+        }*/
         public void Hurt(float str)
         {
             anim.SetTrigger("hurt");

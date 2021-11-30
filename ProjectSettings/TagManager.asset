@@ -9,6 +9,7 @@ TagManager:
   - dead
   - DialogInteract
   - Out-Of-Bound
+  - PlayerBody
   layers:
   - Default
   - TransparentFX

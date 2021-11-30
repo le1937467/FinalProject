@@ -1857,6 +1857,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  fireball: {fileID: 2319820455000267280, guid: a57139bd2a9d4f2478cd37d813589b7a, type: 3}
 --- !u!114 &694188282
 MonoBehaviour:
   m_ObjectHideFlags: 0

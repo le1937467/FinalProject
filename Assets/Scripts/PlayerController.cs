@@ -45,6 +45,10 @@ public class PlayerController : MonoBehaviour
             Jump();
             Run();
 
+            if (!Input.anyKey) // Player should not move X & Z if no input
+            {
+                FreezePosition();
+            }
         }
     }
 
@@ -154,7 +158,6 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(new Vector2(-5f * str, 2f), ForceMode2D.Impulse);
         else
             rb.AddForce(new Vector2(5f * str, 2f), ForceMode2D.Impulse);
-
     }
     public void Die()
     {
@@ -163,6 +166,11 @@ public class PlayerController : MonoBehaviour
         gameObject.tag = "dead";
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
 
+    }
+    void FreezePosition()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
     void Restart()
     {

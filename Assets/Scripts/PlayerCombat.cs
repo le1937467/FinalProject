@@ -7,7 +7,7 @@ public class PlayerCombat : MonoBehaviour
 {
     private static PlayerCombat instance;
     private PlayerHealthBar healthBar;
-    private SimplePlayerController player;
+    private PlayerController player;
 
     [SerializeField]
     public float maxHealth = 100f;
@@ -20,18 +20,18 @@ public class PlayerCombat : MonoBehaviour
     {
         if (!instance)
             instance = this;
-        else if(instance && instance != this)
+        else if (instance && instance != this)
             Destroy(this);
 
         healthBar = GetComponentInChildren<PlayerHealthBar>();
-        player = GetComponent<SimplePlayerController>();
+        player = GetComponent<PlayerController>();
 
         currentHealth = maxHealth;
     }
 
     public void DamagePlayer(float damageToDeal)
     {
-        DamagePlayer(damageToDeal,1);
+        DamagePlayer(damageToDeal, 1);
     }
 
     public void DamagePlayer(float damageToDeal, float kbStr)
@@ -49,9 +49,9 @@ public class PlayerCombat : MonoBehaviour
         }
 
         player.Hurt(kbStr);
-        
+
     }
-    
+
     public void HealPlayer(float amountToHeal)
     {
         currentHealth += amountToHeal;

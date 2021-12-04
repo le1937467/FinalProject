@@ -1497,6 +1497,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4283102651838183696, guid: dd753ed4775f5e946a5fd4fe95004a9c, type: 3}
+      propertyPath: m_GravityScale
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4283102651838183702, guid: dd753ed4775f5e946a5fd4fe95004a9c, type: 3}
       propertyPath: transition
       value: 

@@ -2588,13 +2588,12 @@ MonoBehaviour:
   - Hey..
   - ...
   - ....
-  - .....
   - HEEYYY!!!!
-  - Listen to me ok?
+  - Listen to me.
   - Please go get rid of that dumb rubber duck.
   - If you do...
-  - I will give you back your powers.
-  - For now, just hit [E] him to death.
+  - I will give you everything you'd wish for.
+  - You can hit him with [E] and range attack with [R]
   textSpeed: 0.08
 --- !u!4 &1624333397 stripped
 Transform:
@@ -3345,14 +3344,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7536377135719741097, guid: dd753ed4775f5e946a5fd4fe95004a9c, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 1899305209}
-    - target: {fileID: 7536377135719741097, guid: dd753ed4775f5e946a5fd4fe95004a9c, type: 3}
-      propertyPath: canHit
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7536377135719741097, guid: dd753ed4775f5e946a5fd4fe95004a9c, type: 3}
       propertyPath: transition
       value: 
       objectReference: {fileID: 469574353}
@@ -3361,11 +3352,6 @@ PrefabInstance:
 --- !u!4 &1899305202 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7224029328665577592, guid: dd753ed4775f5e946a5fd4fe95004a9c, type: 3}
-  m_PrefabInstance: {fileID: 1899305201}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &1899305209 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 4283102651838183696, guid: dd753ed4775f5e946a5fd4fe95004a9c, type: 3}
   m_PrefabInstance: {fileID: 1899305201}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1902576078

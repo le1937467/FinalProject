@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Particles")]
     public ParticleSystem dust;
+    public bool hasDusted = false;
 
     [Header("Render")]
     [SerializeField]
@@ -58,9 +59,7 @@ public class PlayerController : MonoBehaviour
             Run();
 
             if (!Input.anyKey) // Player should not move X & Z if no input
-            {
                 FreezePosition();
-            }
         }
     }
 
@@ -81,8 +80,14 @@ public class PlayerController : MonoBehaviour
 
             transform.localScale = new Vector3(direction, 1, 1);
             if (!anim.GetBool("isJump"))
+            {
                 anim.SetBool("isRun", true);
-
+            }
+            if (!hasDusted)
+            {
+                CreateDust();
+                hasDusted = true;
+            }
         }
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
@@ -92,7 +97,11 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(direction, 1, 1);
             if (!anim.GetBool("isJump"))
                 anim.SetBool("isRun", true);
-
+            if (hasDusted)
+            {
+                CreateDust();
+                hasDusted = false;
+            }
         }
         transform.position += moveVelocity * movePower * Time.deltaTime;
     }
@@ -129,8 +138,8 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector2.zero;
             Vector2 jumpVelocity = new Vector2(0, jumpPower);
             rb.AddForce(jumpVelocity, ForceMode2D.Impulse);
+            CreateDust();
         }
-
     }
     void Attack()
     {
@@ -188,6 +197,10 @@ public class PlayerController : MonoBehaviour
             anim.SetTrigger("idle");
             alive = true;
         }
+    }
+    void CreateDust()
+    {
+        dust.Play();
     }
     void OnTriggerEnter2D(Collider2D collision)
     {

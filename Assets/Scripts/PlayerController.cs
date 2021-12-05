@@ -39,12 +39,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject fireball;
 
+    [Header("Walk")]
+    [SerializeField]
+    private AudioSource footsteps;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        footsteps = GetComponent<AudioSource>();
 
     }
 
@@ -201,6 +206,10 @@ public class PlayerController : MonoBehaviour
     void CreateDust()
     {
         dust.Play();
+    }
+    void Footstep()
+    {
+        footsteps.Play();
     }
     void OnTriggerEnter2D(Collider2D collision)
     {

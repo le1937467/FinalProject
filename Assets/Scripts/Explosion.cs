@@ -9,7 +9,7 @@ public class Explosion : MonoBehaviour
     }
     IEnumerator StartTimer()
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(0.3f);
         Destroy(gameObject);
     }
 }

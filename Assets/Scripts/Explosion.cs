@@ -3,8 +3,12 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
+    AudioSource audioSource;
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.Play();
         StartCoroutine(StartTimer());
     }
     IEnumerator StartTimer()

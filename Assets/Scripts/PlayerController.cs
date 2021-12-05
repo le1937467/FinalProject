@@ -4,22 +4,34 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Movement")]
     public float movePower = 10f;
-    public float jumpPower = 15f; //Set Gravity Scale in Rigidbody2D Component to 5
+    private int direction = 1;
+    Vector3 movement;
 
+    [Header("Jump")]
+    public float jumpPower = 15f; //Set Gravity Scale in Rigidbody2D Component to 5
+    public bool isJumping = false;
+
+    [Header("Rigidbody")]
     public Rigidbody2D rb;
     private Animator anim;
-    Vector3 movement;
-    private int direction = 1;
-    public bool isJumping = false;
+
+    [Header("States")]
     public bool canJump = true;
     private bool alive = true;
     private bool canAttack = true;
     public bool canMove = true;
     public bool canHit = false;
+
+    [Header("Animations")]
     public Animator transition;
     public float transitionTime = 1f;
 
+    [Header("Particles")]
+    public ParticleSystem dust;
+
+    [Header("Render")]
     [SerializeField]
     private LayerMask groundLayer;
 
@@ -84,7 +96,6 @@ public class PlayerController : MonoBehaviour
         }
         transform.position += moveVelocity * movePower * Time.deltaTime;
     }
-
     bool isGrounded()
     {
         RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - 0.2f), -Vector2.up, groundLayer);
@@ -99,7 +110,6 @@ public class PlayerController : MonoBehaviour
         else
             return false;
     }
-
     void Jump()
     {
         if (isGrounded())
@@ -130,7 +140,6 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(WaitForAttackState());
         }
     }
-
     void RangedAttack()
     {
         if (Input.GetKeyDown(KeyCode.R) && canAttack)
@@ -200,7 +209,6 @@ public class PlayerController : MonoBehaviour
 
         SceneManager.LoadScene(levelIndex);
     }
-
     IEnumerator WaitForAttackState()
     {
         canAttack = false;

@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 0}
+  impact: {fileID: 7100230789856540529, guid: 58b55b458fb5045c0ad407b6fbc7118f, type: 3}
 --- !u!50 &6191787677041594672
 Rigidbody2D:
   serializedVersion: 4

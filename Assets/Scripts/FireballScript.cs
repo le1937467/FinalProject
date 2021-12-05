@@ -1,16 +1,13 @@
 using ClearSky;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FireballScript : MonoBehaviour
 {
-    [SerializeField] private Animator playerAnimator;
-    private SimplePlayerController player;
+    public GameObject impact;
 
     private void Start()
     {
-        player = GetComponentInParent<SimplePlayerController>();
         StartCoroutine(StartTimer());
     }
 
@@ -21,6 +18,7 @@ public class FireballScript : MonoBehaviour
             EnemyUniversalController enemy = collision.GetComponent<EnemyUniversalController>();
             if (enemy)
             {
+                Instantiate(impact, transform.position, Quaternion.identity);
                 PlayerCombat.GetInstance().DealDamageTo(enemy);
                 Destroy(gameObject);
             }
@@ -31,12 +29,9 @@ public class FireballScript : MonoBehaviour
         }
     }
 
-
     IEnumerator StartTimer()
     {
         yield return new WaitForSeconds(4f);
         Destroy(gameObject);
     }
-
-    
 }

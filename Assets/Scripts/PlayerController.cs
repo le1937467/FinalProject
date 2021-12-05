@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     Vector3 movement;
 
     [Header("Jump")]
-    public float jumpPower = 15f; //Set Gravity Scale in Rigidbody2D Component to 5
+    public float jumpPower = 15f;
     public bool isJumping = false;
 
     [Header("Rigidbody")]

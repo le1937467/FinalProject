@@ -50,7 +50,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         footsteps = GetComponent<AudioSource>();
-
     }
 
     private void Update()

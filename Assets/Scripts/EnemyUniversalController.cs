@@ -79,7 +79,8 @@ public class EnemyUniversalController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            anim.SetTrigger("attack");
+            if(anim)
+                anim.SetTrigger("attack");
             PlayerCombat.GetInstance().DamagePlayer(damage, knockbackStrength);
         }
     }
